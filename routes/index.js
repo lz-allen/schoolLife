@@ -13,6 +13,10 @@ module.exports = app => {
   router.post('/delete', app.publish.deleteImg)
 
   // 发送消息
-  router.post('/sendMessage', app.chat.sendMssage)
+  router.post('/sendMessage', app.chat.sendMessage)
+  router.get('/getMessage', app.chat.getMessage)
+  // 创建联系人列表
+  router.post('/addChatImgList', app.chat.addChatImgList)
+  router.get('/getChatImgList', app.chat.getChatImgList)
   app.use(router.routes()).use(router.allowedMethods())
 }

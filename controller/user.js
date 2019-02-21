@@ -20,8 +20,7 @@ module.exports = {
       })
 
       let {
-        openid,
-        session_key
+        openid
       } = data
       data ? ctx.send({
         openid,
