@@ -4,12 +4,10 @@ module.exports = {
   async getMessage(ctx, next) {
     try {
       let { openid, replyId } = ctx.request.query
-      console.log( ctx.request.params)
       let data = await ctx.find(chatModel, {
         openid: openid,
         replyId: replyId,
-      }, {})
-      console.log(data)
+      })
       if (data) {
         ctx.send(data)
       }
@@ -53,8 +51,8 @@ module.exports = {
   },
   async getChatImgList(ctx, next) {
     try {
-
-      let data = await ctx.find(chatImgListModel, {}, {
+      let { openid } = ctx.request.query
+      let data = await ctx.find(chatImgListModel, {$or:[{'openid': openid},{'replyId': openid}]}, {
         _id: 0
       })
       if (data) {
