@@ -6,6 +6,7 @@ const chatImgListSchema = mongoose.Schema({
   uniqueId: String,
   replyId: String,
   avatarUrl: String,
+  replyUrl: String,
   nickName: String,
   status: String
 })

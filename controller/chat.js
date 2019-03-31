@@ -3,10 +3,11 @@ const chatImgListModel = require('../models/chatImgList')
 module.exports = {
   async getMessage(ctx, next) {
     try {
-      let { openid, replyId } = ctx.request.query
+      let { openid, replyId,uniqueId } = ctx.request.query
       let data = await ctx.find(chatModel, {
         openid: openid,
         replyId: replyId,
+        uniqueId: uniqueId
       })
       if (data) {
         ctx.send(data)

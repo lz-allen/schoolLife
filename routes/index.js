@@ -18,5 +18,8 @@ module.exports = app => {
   // 创建联系人列表
   router.post('/addChatImgList', app.chat.addChatImgList)
   router.get('/getChatImgList', app.chat.getChatImgList)
+
+  // 创建订单
+  router.post('/createOrder', app.order.createOrder)
   app.use(router.routes()).use(router.allowedMethods())
 }
