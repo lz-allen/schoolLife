@@ -21,5 +21,8 @@ module.exports = app => {
 
   // 创建订单
   router.post('/createOrder', app.order.createOrder)
+
+  // 我发布的
+  router.get('/getPublishList', app.mine.getPublishList)
   app.use(router.routes()).use(router.allowedMethods())
 }
