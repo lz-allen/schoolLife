@@ -8,6 +8,9 @@ module.exports = app => {
   // 任务
   router.post('/insertList', app.publish.insertList)
   router.get('/getList', app.publish.getList)
+  router.get('/getItemById', app.publish.getItemById)
+  router.post('/deleteItemById', app.publish.deleteItemById)
+  
   // 图片
   router.post('/upload', app.publish.upload)
   router.post('/delete', app.publish.deleteImg)

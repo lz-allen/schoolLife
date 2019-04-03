@@ -59,5 +59,27 @@ module.exports = {
     } catch (error) {
       ctx.sendError(error)
     }
+  },
+  async getItemById(ctx, next) {
+    let params = ctx.request.query
+    try {
+      let data = await ctx.findOne(publishModel, params)
+      ctx.send(data)
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
+  async deleteItemById(ctx, next) {
+    let params = ctx.request.body
+    try {
+      let data = await ctx.remove(publishModel, params)
+      data ? ctx.send(
+        '删除成功'
+      ) : ctx.sendError(
+        '删除失败'
+      )
+    } catch (error) {
+      ctx.sendError(error)
+    }
   }
 }
