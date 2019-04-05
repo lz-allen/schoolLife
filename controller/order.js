@@ -21,4 +21,23 @@ module.exports = {
       ctx.sendError(error)
     }
   },
+  async getBuyList(ctx, next) {
+    let {
+      pageSize = 6,
+      currentPage = 1,
+      openid
+    } = ctx.request.query
+    try {
+      let data = await ctx.findPage(orderModel, {openid}, {}, {
+        limit: pageSize * 1,
+        skip: (currentPage - 1) * pageSize,
+        sort: {
+          time: -1
+        }
+      })
+      ctx.send(data)
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
 }

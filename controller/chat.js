@@ -62,5 +62,20 @@ module.exports = {
     } catch (error) {
       ctx.sendError(error)
     }
+  },
+  async getChatImgListItem(ctx, next) {
+    try {
+      let { uniqueId } = ctx.request.query
+      let data = await ctx.findOne(chatImgListModel, {uniqueId}, {
+        _id: 0
+      })
+      if (data) {
+        ctx.send(data)
+      }else{
+        ctx.sendError('请先创建联系人')
+      }
+    } catch (error) {
+      ctx.sendError(error)
+    }
   }
 }

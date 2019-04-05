@@ -6,7 +6,8 @@ const orderSchema = mongoose.Schema({
   replyName: String,
   status: String,
   price: String,
-  pImg: String,
+  imgList: Array,
   desc: String,
+  time: String,
 })
 module.exports = mongoose.model('order', orderSchema)

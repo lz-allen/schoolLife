@@ -15,6 +15,21 @@ module.exports = {
       ctx.sendError(error)
     }
   },
+  async updatePublishItem(ctx, next) {
+    let params = ctx.request.body
+    const {_id} = params 
+    delete params._id
+    try {
+      let data = await ctx.update(publishModel,{_id}, params)
+      data ? ctx.send(
+        '修改成功'
+      ) : ctx.sendError(
+        '修改失败'
+      )
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
   async upload(ctx, next) {
     let opts = {
       path: path.resolve(__dirname, '../public')
@@ -45,8 +60,8 @@ module.exports = {
       type
     } = ctx.request.query
     let conditions = {
-      type: type
     }
+    type && (conditions['type']= type);
     try {
       let data = await ctx.findPage(publishModel, conditions, {}, {
         limit: pageSize * 1,

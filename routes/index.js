@@ -10,6 +10,7 @@ module.exports = app => {
   router.get('/getList', app.publish.getList)
   router.get('/getItemById', app.publish.getItemById)
   router.post('/deleteItemById', app.publish.deleteItemById)
+  router.post('/updatePublishItem', app.publish.updatePublishItem)
   
   // 图片
   router.post('/upload', app.publish.upload)
@@ -21,9 +22,11 @@ module.exports = app => {
   // 创建联系人列表
   router.post('/addChatImgList', app.chat.addChatImgList)
   router.get('/getChatImgList', app.chat.getChatImgList)
+  router.get('/getChatImgListItem', app.chat.getChatImgListItem)
 
   // 创建订单
   router.post('/createOrder', app.order.createOrder)
+  router.get('/getBuyList', app.order.getBuyList)
 
   // 我发布的
   router.get('/getPublishList', app.mine.getPublishList)
