@@ -27,6 +27,9 @@ module.exports = app => {
   // 创建订单
   router.post('/createOrder', app.order.createOrder)
   router.get('/getBuyList', app.order.getBuyList)
+  router.get('/getSellList', app.order.getSellList)
+  router.get('/getOrderItem', app.order.getOrderItem)
+  router.post('/updateOrderItem', app.order.updateOrderItem)
 
   // 我发布的
   router.get('/getPublishList', app.mine.getPublishList)

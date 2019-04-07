@@ -28,7 +28,7 @@ module.exports = {
       openid
     } = ctx.request.query
     try {
-      let data = await ctx.findPage(orderModel, {openid}, {}, {
+      let data = await ctx.findPage(orderModel, { openid }, {}, {
         limit: pageSize * 1,
         skip: (currentPage - 1) * pageSize,
         sort: {
@@ -36,6 +36,49 @@ module.exports = {
         }
       })
       ctx.send(data)
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
+  async getSellList(ctx, next) {
+    let {
+      pageSize = 6,
+      currentPage = 1,
+      openid
+    } = ctx.request.query
+    try {
+      let data = await ctx.findPage(orderModel, { replyId: openid }, {}, {
+        limit: pageSize * 1,
+        skip: (currentPage - 1) * pageSize,
+        sort: {
+          time: -1
+        }
+      })
+      ctx.send(data)
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
+  async getOrderItem(ctx, next) {
+    let params = ctx.request.query
+    try {
+      let { uniqueId } = params
+      let info = await ctx.findOne(orderModel, { uniqueId })
+      ctx.send(info)
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
+  async updateOrderItem(ctx, next) {
+    let params = ctx.request.body
+    try {
+      let { uniqueId, status } = params
+      let data = await ctx.update(orderModel, { uniqueId }, { status: status })
+      data ? ctx.send(
+        '发货成功'
+      ) : ctx.sendError(
+        '发货失败'
+      )
     } catch (error) {
       ctx.sendError(error)
     }
