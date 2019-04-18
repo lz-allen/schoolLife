@@ -72,8 +72,8 @@ module.exports = {
   async updateOrderItem(ctx, next) {
     let params = ctx.request.body
     try {
-      let { uniqueId, status } = params
-      let data = await ctx.update(orderModel, { uniqueId }, { status: status })
+      let { uniqueId, status, expressId } = params
+      let data = await ctx.update(orderModel, { uniqueId }, { status, expressId })
       data ? ctx.send(
         '发货成功'
       ) : ctx.sendError(

@@ -9,5 +9,6 @@ const orderSchema = mongoose.Schema({
   imgList: Array,
   desc: String,
   time: String,
+  expressId: String,
 })
 module.exports = mongoose.model('order', orderSchema)
