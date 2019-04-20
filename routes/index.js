@@ -33,5 +33,9 @@ module.exports = app => {
 
   // 我发布的
   router.get('/getPublishList', app.mine.getPublishList)
+
+  // 物流
+  router.get('/getExpressList', app.express.getExpressList)
   app.use(router.routes()).use(router.allowedMethods())
+
 }
