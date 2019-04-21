@@ -11,7 +11,7 @@ module.exports = app => {
   router.get('/getItemById', app.publish.getItemById)
   router.post('/deleteItemById', app.publish.deleteItemById)
   router.post('/updatePublishItem', app.publish.updatePublishItem)
-  
+
   // 图片
   router.post('/upload', app.publish.upload)
   router.post('/delete', app.publish.deleteImg)
@@ -36,6 +36,10 @@ module.exports = app => {
 
   // 物流
   router.get('/getExpressList', app.express.getExpressList)
-  app.use(router.routes()).use(router.allowedMethods())
+  
+  // websocket
+  app.ws.use(router.all('/test/:id', app.websocket.websocketFn));
 
+
+  app.use(router.routes()).use(router.allowedMethods())
 }

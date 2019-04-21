@@ -6,7 +6,7 @@ const send = require('./send')
 const func = require('./func')
 const auth = require('./auth')
 const Rule = require('./rule')
-
+const websocket = require('./websocket')
 
 module.exports = app => {
   // middlewares
@@ -31,12 +31,14 @@ module.exports = app => {
   app.use(func())
   app.use(auth())
   app.use(require('koa-static')(__dirname + '/../public'))
-
   // error-handling
   Rule({
     app,
     path: path.join(__dirname, '../controller')
-  } )
+  })
+  // websocket
+  app.ws.use(websocket)
+
   app.on('error', (err, ctx) => {
     console.error('server error', err, ctx)
   })

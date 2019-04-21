@@ -69,7 +69,6 @@ module.exports = {
       let data = await ctx.findOne(chatImgListModel, {uniqueId}, {
         _id: 0
       })
-      console.log(uniqueId)
       if (data) {
         ctx.send(data)
       }else{

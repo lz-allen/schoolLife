@@ -45,7 +45,6 @@ module.exports = {
     } = ctx.request.body
     try {
       let data = await ctx.deleteFile(filepath)
-      console.log(data)
       ctx.send(
         data
       )

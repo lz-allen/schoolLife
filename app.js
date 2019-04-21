@@ -1,5 +1,6 @@
 const Koa = require('koa')
-const app = new Koa()
+const websockify = require('koa-websocket')
+const app = websockify(new Koa());
 const Middleware = require('./middleware')
 const Router = require('./routes')
 
