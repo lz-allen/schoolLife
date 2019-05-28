@@ -37,9 +37,5 @@ module.exports = app => {
   // 物流
   router.get('/getExpressList', app.express.getExpressList)
   
-  // websocket
-  app.ws.use(router.all('/test/:id', app.websocket.websocketFn));
-
-
   app.use(router.routes()).use(router.allowedMethods())
 }

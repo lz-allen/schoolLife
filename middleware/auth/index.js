@@ -3,7 +3,8 @@ const conf = require('../../config.js')
 
 module.exports = () => {
   return async (ctx, next) => {
-    if (ctx.path.indexOf('auth') < 0 && ctx.path.indexOf('getToken') < 0 && ctx.path.indexOf('images') < 0) {
+    if (ctx.path.indexOf('auth') > 0 || ctx.path.indexOf('getToken') > 0 || ctx.path.indexOf('images') > 0 || ctx.path.indexOf('test') > 0) {
+    } else {
       let token = ctx.header.token
       if (!token) {
         ctx.sendError('token验证失败, 请重新登录!')
