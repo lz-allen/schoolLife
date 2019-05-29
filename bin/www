@@ -19,19 +19,26 @@ var port = normalizePort(process.env.PORT || '3000');
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app.callback());
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
-  socket.on('clientNews', function (data) {
-    console.log(data);
+  socket.on('clientNews', function (data,cb) {
+    cb(true)
+    io.sockets.emit('ServerNews', {
+      type: 'info',
+      userInfo: socket.userInfo,
+      msg: data.msg
+    })
   });
   socket.on('start', async function (data) {
-    let user = await Db_func.findOne(userModel, {
+    socket.userInfo = await Db_func.findOne(userModel, {
       openid: data.openid
     })
-    socket.emit('system', { type: 'start', msg: `欢迎${user.nickName}加入聊天室` });
+    io.sockets.emit('system', { type: 'start', msg: `欢迎${socket.userInfo && socket.userInfo.nickName}进入聊天室`});
   });
+  socket.on('disconnect', () => {
+    io.sockets.emit('system', { type: 'start', msg: `${socket.userInfo && socket.userInfo.nickName}离开聊天室`});
+});
 });
 
 /**
