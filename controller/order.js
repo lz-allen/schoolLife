@@ -69,6 +69,16 @@ module.exports = {
       ctx.sendError(error)
     }
   },
+  async deleteOrderItem(ctx, next) {
+    let params = ctx.request.body
+    try {
+      let { uniqueId } = params
+      let info = await ctx.remove(orderModel, { uniqueId })
+      ctx.send(info)
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
   async updateOrderItem(ctx, next) {
     let params = ctx.request.body
     try {

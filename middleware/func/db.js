@@ -20,6 +20,17 @@ const update = (model, conditions, update, options) => {
   })
 }
 
+const updateAll = (model, conditions, update, options) => {
+  return new Promise((resolve, reject) => {
+    model.updateMany(conditions, update, options, (err, res) => {
+      if (err) {
+        reject(err)
+      }
+      resolve(res)
+    })
+  })
+}
+
 const remove = (model, conditions) => {
   return new Promise((resolve, reject) => {
     model.deleteOne(conditions, (err,res) => {
@@ -81,6 +92,7 @@ const findPage = async (model, conditions, fields, options) => {
 module.exports = {
   add,
   update,
+  updateAll,
   find,
   findOne,
   findPage,

@@ -30,9 +30,14 @@ module.exports = app => {
   router.get('/getSellList', app.order.getSellList)
   router.get('/getOrderItem', app.order.getOrderItem)
   router.post('/updateOrderItem', app.order.updateOrderItem)
+  router.post('/deleteOrderItem', app.order.deleteOrderItem)
 
   // 我发布的
   router.get('/getPublishList', app.mine.getPublishList)
+  // 创建收货信息
+  router.post('/createAddress', app.mine.createAddress)
+  router.get('/getAddress', app.mine.getAddress)
+  router.post('/deleteAddress', app.mine.deleteAddress)
 
   // 物流
   router.get('/getExpressList', app.express.getExpressList)
