@@ -4,6 +4,7 @@ const chatSchema = mongoose.Schema({
   text: String,
   uniqueId: String,
   avatarUrl: String,
-  replyId: String
+  replyId: String,
+  replyUrl: String
 })
 module.exports = mongoose.model('chat', chatSchema)

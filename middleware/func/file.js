@@ -31,7 +31,7 @@ module.exports = {
         filename: 文件名
     */
     return new Promise((resolve, reject) => {
-      const host = '192.168.1.4:3000'
+      const host = 'lzf-allen.top:3002'
       var fileObj = {}
       busboy.on('file', async (fieldname, file, filename, encoding, mimetype) => {
         let filePath = '',

@@ -13,7 +13,7 @@ const userModel = require('../models/user')
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3002');
 // app.set('port', port);
 
 /**
@@ -37,7 +37,6 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('system', { type: 'start', msg: `欢迎${socket.userInfo && socket.userInfo.nickName}进入聊天室`});
   });
   socket.on('leave', () => {
-    console.log(2321321)
     io.sockets.emit('system', { type: 'start', msg: `${socket.userInfo && socket.userInfo.nickName}离开聊天室`});
     socket.disconnect()
 });

@@ -30,6 +30,23 @@ module.exports = {
       ctx.sendError(error)
     }
   },
+  async updatePublishHidden(ctx, next) {
+    let params = ctx.request.body
+    const {_id} = params 
+    delete params._id
+    try {
+      let data = await ctx.update(publishModel,{_id}, {$set:{
+        isVisible: false
+      }})
+      data ? ctx.send(
+        '修改成功'
+      ) : ctx.sendError(
+        '修改失败'
+      )
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
   async upload(ctx, next) {
     let opts = {
       path: path.resolve(__dirname, '../public')

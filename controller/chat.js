@@ -5,9 +5,8 @@ module.exports = {
     try {
       let { openid, replyId,uniqueId } = ctx.request.query
       let data = await ctx.find(chatModel, {
-        openid: openid,
-        replyId: replyId,
-        uniqueId: uniqueId
+      
+      uniqueId: uniqueId
       })
       if (data) {
         ctx.send(data)
@@ -45,6 +44,19 @@ module.exports = {
         ctx.send(
           'success'
         )
+      }
+    } catch (error) {
+      ctx.sendError(error)
+    }
+  },
+  async deleteChatImgList(ctx, next) {
+    try {
+      let { uniqueId } = ctx.request.body
+      let data = await ctx.remove(chatImgListModel, {
+      uniqueId: uniqueId
+      })
+      if (data) {
+        ctx.send(data)
       }
     } catch (error) {
       ctx.sendError(error)
