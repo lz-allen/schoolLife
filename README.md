@@ -12,7 +12,7 @@
 我所使用的版本为
 
 ```js
-~/Workspace/schoolLife(master⚡) » npm -v↵
+~/Workspace/schoolLife(master⚡) » npm -v
 6.9.0
 
 ~/Workspace/schoolLife(master⚡) » node -v
