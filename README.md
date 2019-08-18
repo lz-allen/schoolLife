@@ -1,12 +1,10 @@
 # schoolLife
 
-## 技术栈
+## 项目描述
 
-- backend: nodejs （koa)
-- database: mongodb
-- fontend: 微信小程序
+校园生活小程序的后台，为[微信小程序](https://github.com/lz-allen/miniProgram)提供接口
 
-## 项目搭建
+## 安装
 
 项目搭建需要依赖 node
 我所使用的版本为
@@ -45,6 +43,58 @@ yarn
 yarn start
 ```
 
-## 项目描述
+## 目录结构
 
-校园生活小程序的后台，为[微信小程序](https://github.com/lz-allen/miniProgram)提供接口
+```markdown
+├── app.js
+├── bin
+│   └── www
+├── config.js
+├── controller
+│   ├── chat.js
+│   ├── express.js
+│   ├── mine.js
+│   ├── order.js
+│   ├── publish.js
+│   ├── user.js
+│   └── websocket.js
+├── middleware
+│   ├── auth
+│   │   └── index.js
+│   ├── func
+│   │   ├── db.js
+│   │   ├── file.js
+│   │   └── index.js
+│   ├── index.js
+│   ├── rule
+│   │   └── index.js
+│   └── send
+│       └── index.js
+├── models
+│   ├── address.js
+│   ├── chat.js
+│   ├── chatImgList.js
+│   ├── order.js
+│   ├── publish.js
+│   └── user.js
+├── mongodb.js
+├── package.json
+├── public
+│   └── images
+│       └── Thumbs.db
+├── routes
+│   └── index.js
+├── utils
+│   └── fetch.js
+└── yarn.lock
+```
+
+## 技术栈
+
+- backend: nodejs （koa)
+- database: mongodb
+- fontend: 微信小程序
+
+## 版权说明
+
+该项目遵循了 MIT 授权许可
